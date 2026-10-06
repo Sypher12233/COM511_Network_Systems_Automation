@@ -1,16 +1,17 @@
+# Session 1
 
 [My Practice Course Work](../../myPracticeCourseWork/) | [Personal Journal](../personal_journal/)
 
-# Personal Journal
+## Personal Journal
 
-|      |      |
-|:---- |:---- |
-| Course and Year | COM511 Network Systems Automation 2026 | 
-| Student Name | |
-| Student Number | |
-| Student Email | |
-| Github Account Username | |
-| Github Submission Repository URL | |
+|                                  |                                                                  |
+| :------------------------------- | :--------------------------------------------------------------- |
+| Course and Year                  | COM511 Network Systems Automation 2026                           |
+| Student Name                     | Uzair Khan                                                       |
+| Student Number                   | 103093206                                                        |
+| Student Email                    | 0khanu06@solent.ac.uk                                            |
+| Github Account Username          | Sypher Sec                                                       |
+| Github Submission Repository URL | https://github.com/Sypher12233/COM511_Network_Systems_Automation |
 
 ## Introduction
 
@@ -23,5 +24,3 @@ These Markdown pages contain my notes and reflections on the material presented 
 |[Prior Experience](../personal_journal/priorExperience.md) | A summary of my knowledge entering this module| |
 |[Class Sessions](../personal_journal/sessions) | My notes on each class session | Suitability and quality of content and discussion (50%) |
 |[Personal Reflection](../personal_journal/personalReflection.md) |A final reflection on what I have learned during this module | |
-
-
