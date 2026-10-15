@@ -1,4 +1,4 @@
-[Personal Journal](../personal_journal) | [Personal Reflection](../personal_journal/personalReflection.md) 
+[Personal Journal](../personal_journal) | [Personal Reflection](personalReflection%20(end%20of%20Module).md) 
 
 # personal reflection
 

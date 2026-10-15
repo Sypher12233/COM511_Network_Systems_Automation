@@ -1,5 +1,7 @@
 [Personal Learning Record](../../personal_journal/personal_journal.md) | [Session Notes](../sessions/README.md) 
 
+
+Define what I will be working on (assessment brief). Specify an objective
 # Session 2
 
 ## Topics covered

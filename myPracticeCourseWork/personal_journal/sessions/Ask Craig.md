@@ -1,0 +1,2 @@
+* Does the personal journal/Class session notes (50% according to the Readme on personal_journal dir) hold any value in grading. As the assessment brief says 100% grading will be done based on the Individual report and doesn't mention anything about the personal journal.
+* 

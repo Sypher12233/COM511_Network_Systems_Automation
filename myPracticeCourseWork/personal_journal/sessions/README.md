@@ -11,18 +11,18 @@ Use  screen shots and / or code samples as appropriate.
 
 ---
 
-|  Session                                | Topics                                                                 |
-|:----------------------------------------|:-----------------------------------------------------------------------|
-| [Session&nbsp;1](../sessions/session1.md) |                                                                      |
-| [Session&nbsp;2](../sessions/session2.md) |                                                                      |
-| [Session&nbsp;3](../sessions/session3.md) |                                                                      |
-| [Session&nbsp;4](../sessions/session4.md) |                                                                      |
-| [Session&nbsp;5](../sessions/session5.md) |                                                                      |
-| [Session&nbsp;6](../sessions/session6.md) |                                                                      |
-| [Session&nbsp;7](../sessions/session7.md) |                                                                      |
-| [Session&nbsp;8](../sessions/session8.md) |                                                                      |
-| [Session&nbsp;9](../sessions/session9.md) |                                                                      |
-| [Session&nbsp;10](../sessions/session10.md) |                                                                    |
-| [Session&nbsp;11](../sessions/session11.md) |                                                                    |
-| [Session&nbsp;12](../sessions/session12.md) |                                                                    |
-|                                             |                                                                    |
+| Session                                                                                                     | Topics            |
+| :---------------------------------------------------------------------------------------------------------- | :---------------- |
+| [Session&nbsp;1](../sessions/session1.md)                                                                   | IaC, Vagrant, ssh |
+| [Session&nbsp;2](../sessions/session2.m vagrant file, password less ssh, package management, ansible t,  h, |                   |
+| [Session&nbsp;3](../sessions/session3.                                                                      |                   |
+| [Session&nbsp;4](../sessions/session                                                                        |                   |
+| [Session&nbsp;5](../sessions/sessi                                                                          |                   |
+| [Session&nbsp;6](../sessions/ses                                                                            |                   |
+| [Session&nbsp;7](../sessions/s                                                                              |                   |
+| [Session&nbsp;8](../sessions                                                                                |                   |
+| [Session&nbsp;9](../sessio                                                                                  |                   |
+| [Session&nbsp;10](../ses                                                                                    |                   |
+| [Session&nbsp;11](../s                                                                                      |                   |
+| [Session&nbsp;12](..                                                                                        |                   |
+|                                                                                                             |                   |
