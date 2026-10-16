@@ -54,3 +54,4 @@ There was one more wierd issue I had, which was no matter which vm I would ssh i
  
 ## Summary of learning
 *What did you learn through these exercises*
+As we will be adding new offices in the case study, dhcp is a good and scalable solution to assign ip addresses to the new offices.
