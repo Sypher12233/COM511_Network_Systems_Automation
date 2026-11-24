@@ -13,7 +13,7 @@ Many applications need to be deployed across several machines for load sharing a
 
 The industry has invented a more efficient way of virtualising environments using `containers`.
 
-[What is containerization?](https://www.ibm.com/think/topics/containerization )  
+[What is containerization?](https://www.ibm.com/think/topics/containerization )
 
 Any application running inside a container appears to have the same environment as it would have if it was running on an operating system on a virtual machine. 
 However, instead of installing multiple virtual machines, multiple separate containers can exist and communicate within the same virtual machine and share the core resources of the underlying operating system.
