@@ -1,0 +1,4 @@
+# Linux-only files (run inside Vagrant VMs / Docker containers): always LF
+*.sh             text eol=lf
+tftpd-hpa        text eol=lf
+network-config   text eol=lf

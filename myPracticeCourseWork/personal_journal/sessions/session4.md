@@ -20,20 +20,52 @@
 
 ## Exercises and results
 *What exercises did you complete. What results. Screen shots and notes*
+
+The goal was to get the PXE server running and the client VM to boot from it and install Ubuntu automatically. I ran into two issues that prevented this from happening.
+
 ### Issue 1: Line endings
-* Provisioning the PXE server failed because two files had the wrong line endings
+* From what I could find, provisioning the PXE server failed because a file had the wrong line ending
 ![Error during vagrant up](../images/w4-crlf-error.png)
 
 * Windows uses CRLF to end lines, Linux uses LF
 * Git on Windows was converting LF to CRLF on checkout. Fine for files used on Windows, but these two run inside the Linux VM:
-  * `setup.sh`: provisioning script, updates the VM and installs the initial software (TFTP, NFS, nginx, DHCP)
   * `tftpd-hpa`: configuration for the TFTP server
 * Linux could not read them correctly with CRLF endings, so setup failed
+
+#### Solution
 * Changed both files to LF
-* Researched on Stack Overflow: same problem reported about 13 years ago
-* Fix found: set Git attributes (`.gitattributes`) so Git does not convert line endings for these files
-* Result: provisioning now runs smoothly
+* Researched on Stack Overflow: same [problem reported](https://stackoverflow.com/questions/1967370/git-replacing-lf-with-crlf) about 13 years ago
+
+![Fixing line endings](../images/w4-crlf-vagrantfile.png)
+![Fixing line endings](../images/w4-lf-tftpd.png)
+
+We can check the line endings of a file with `git ls-files --eol <file>`. The outputs in the screenshot show that the `Vagrantfile` is `CRLF` and `tftpd-hpa` file is now set to `LF` which is what the Linux VM needs.
+
+* **More Permanent Fix**: We can set Git attributes (`.gitattributes`) so Git does not convert line endings for these files in future checkouts:
+  * Added a `.gitattributes` file at the root of the repo
+  * Only files that run inside the Linux VMs/containers are forced to LF (`*.sh`, `*.conf`, `tftpd-hpa`)
+  * I did not use a catch-all rule (`* text eol=lf`), because it would also hit any Windows scripts (`.bat`/`.ps1`) added later, and those need CRLF
+
+Added these lines to the `.gitattributes` file at the root of the repo:
+  ```bash
+  *.sh             text eol=lf
+  *.conf           text eol=lf
+  tftpd-hpa        text eol=lf
+  isc-dhcp-server  text eol=lf
+  user-data        text eol=lf
+  **/pxelinux.cfg/default text eol=lf
+  *.png            binary
+  *.c32            binary
+  ```
+
+
+**Result**: provisioning now runs smoothly
+
 ![Successful provisioning](../images/w4-provision-ok.png)
+
+To fix line endings, we can use `git add --renormalize .` to re-add all files in the repo, and then commit the changes. This will fix any line endings that are not consistent with the `.gitattributes` file.
+
+Other ways to fix line endings include using `dos2unix` or `unix2dos` commands, or using a text editor that can convert line endings (like VS Code).
 
 ![Fixing line endings](../images/w4-fixing-crlf.png)
 <!-- ![.gitattributes file](../images/w4-gitattributes) -->
