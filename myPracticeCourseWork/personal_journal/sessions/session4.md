@@ -17,6 +17,9 @@
 *Which class sessions and personal research refers to technology in this proposal. Link to examples.*
 * Stack Overflow thread on Git CRLF/LF conversion: [CRLF/LF on Stack Overflow](https://stackoverflow.com/questions/1967370/git-replacing-lf-with-crlf)
 * Git documentation: [gitattributes](https://git-scm.com/docs/gitattributes)
+* GitHub guide on line endings across Windows, macOS and Linux: [Configuring Git to handle line endings](https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings)
+* Git setting that converts LF to CRLF on Windows checkouts: [core.autocrlf](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreautocrlf)
+* Commands used to check the fix: [git check-attr](https://git-scm.com/docs/git-check-attr) and [git ls-files --eol](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---eol)
 
 ## Exercises and results
 *What exercises did you complete. What results. Screen shots and notes*
@@ -71,14 +74,22 @@ Other ways to fix line endings include using `dos2unix` or `unix2dos` commands, 
 <!-- ![.gitattributes file](../images/w4-gitattributes) -->
 
 ### Issue 2: Not enough RAM
-* Laptop ran out of RAM with both VMs running
+* Laptop ran out of RAM when I tried to run both the PXE server and the client VM at the same time
 * Client VM stopped while downloading the ISO files, so the install failed
-* Lowered the server VM's RAM and added 1 GB to the client VM
-* Result: retest in progress
+* Lowered the server VM's RAM and added 1 GB to the client VM, same result
 
 ![Client VM stopped](../images/w4-ram-issue.png)
 
-My conclusion: fixing the line endings was a prerequisite to getting the PXE server working, but the RAM issue was a separate problem that needed to be solved before the client could successfully boot and install, but I can't as my laptop lacks sufficient RAM.
+My conclusion: fixing the line endings was a prerequisite to getting the PXE server working, but the RAM issue was a separate problem that needed to be solved before the client could successfully boot and install, which I can't as my laptop lacks sufficient RAM.
+
+The two issues were different kinds of problem:
+* **Line endings** was a configuration problem. It was caused by how Git handled the files on Windows, so I could fix it myself and stop it happening again with `.gitattributes`
+* **RAM** was a hardware limit. Changing how memory was split between the VMs did not help, because both VMs together need more RAM than my laptop has
+
+Next steps to finish the exercise:
+* Run the lab on a machine with more RAM (e.g. a university lab PC) and repeat the client boot
+* Check how much memory the Vagrantfiles give each VM before running `vagrant up`, so I know if the host can run both
+* Check if we can use an ftp server instead of a PXE server to install the client VM, which may use less RAM
 
 ## Summary of learning
 *What did you learn through these exercises*
@@ -86,3 +97,9 @@ My conclusion: fixing the line endings was a prerequisite to getting the PXE ser
 * Git can change line endings automatically, and `.gitattributes` controls this per file
 * Files edited on the host are copied into the VM, so host-side mistakes can break the VM
 * VMs share the host's RAM; it has to be split sensibly between server and client
+* PXE boot depends on several services working together (DHCP, TFTP, nginx, cloud-init), so one broken config file can stop the whole chain
+* `git ls-files --eol <file>` shows a file's line endings in the repo and in the working copy, which is a quick way to confirm a CRLF problem
+* Line endings can be fixed in several ways: `git add --renormalize .` after adding `.gitattributes`, `dos2unix`, or changing CRLF to LF in VS Code
+* A catch-all `.gitattributes` rule can create new problems (Windows scripts need CRLF), so it is safer to list only the files that run on Linux
+* Reading the error message from `vagrant up` and searching for it (Stack Overflow, Git docs) led straight to the cause. It turned out to be a common problem
+* Some problems are configuration I can fix; others, like not having enough RAM, are hardware limits I have to work around
